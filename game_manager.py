@@ -45,6 +45,9 @@ class Game_Manger():
                 else:
                     row.append(" ")
             self.game_map.append(row)
+    
+    def update_objects(self):
+        self.player.update_player(self.game_map)
 
     def update_map(self):
 
