@@ -4,6 +4,8 @@
 
 import sys
 from player import Player
+from ai import Ai
+from ball import Ball
 
 # Colors
 BLACK   = '\033[30m'
@@ -28,6 +30,12 @@ class Game_Manger():
         # Creates Player Object
         self.player = Player(self.game_height//2,3)
 
+        # Creates Ai Object
+        self.ai = Ai(self.game_height//2,self.game_width-3)
+
+        # Creates Ball Object
+        self.ball = Ball(self.game_height//2,self.game_width//2)
+
     def world_gen(self):
         for y in range(self.game_height):
             row = []
@@ -43,6 +51,10 @@ class Game_Manger():
             for x in range(self.game_width):
                 if y == self.player.ypos and x == self.player.xpos:
                     print(f"{GREEN}|{RESET}",end="")
+                elif y == self.ai.ypos and x == self.ai.xpos:
+                    print(f"{GREEN}|{RESET}",end="")
+                elif y == self.ball.ypos and x == self.ball.xpos:
+                    print(f"{RED}o{RESET}",end="")
                 else:
                     print(f"{DARK_GRAY}{self.game_map[y][x]}{RESET}",end="")
             print()
