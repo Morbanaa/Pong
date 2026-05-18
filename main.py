@@ -12,6 +12,7 @@ def main():
     game_manager.world_gen()
     while True:
         # Update
+        game_manager.update_objects() # Needs to be before update map
         game_manager.update_map()
 
         # Render
