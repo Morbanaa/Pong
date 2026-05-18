@@ -46,12 +46,26 @@ class Game_Manger():
                     row.append(" ")
             self.game_map.append(row)
 
-    def render_world(self):
+    def update_map(self):
         for y in range(self.game_height):
             for x in range(self.game_width):
                 if y == self.player.ypos and x == self.player.xpos:
-                    print(f"{GREEN}|{RESET}",end="")
-                elif y == self.ai.ypos and x == self.ai.xpos:
+                    self.game_map[self.player.ypos][self.player.xpos] = "|"
+                    self.game_map[self.player.ypos -1][self.player.xpos] = "|"
+                    self.game_map[self.player.ypos -2][self.player.xpos] = "|"
+                    self.game_map[self.player.ypos +1][self.player.xpos] = "|"
+                    self.game_map[self.player.ypos +2][self.player.xpos] = "|"
+
+                    if self.game_map[self.player.ypos-3][self.player.xpos] != "@":
+                        self.game_map[self.player.ypos -3][self.player.xpos] = " "
+                    if self.game_map[self.player.ypos+3][self.player.xpos] != "@":
+                        self.game_map[self.player.ypos +3][self.player.xpos] = " "
+
+
+    def render_world(self):
+        for y in range(self.game_height):
+            for x in range(self.game_width):
+                if self.game_map[y][x] == "|":
                     print(f"{GREEN}|{RESET}",end="")
                 elif y == self.ball.ypos and x == self.ball.xpos:
                     print(f"{RED}o{RESET}",end="")
