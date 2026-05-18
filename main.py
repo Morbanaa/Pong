@@ -11,6 +11,9 @@ def main():
 
     game_manager.world_gen()
     while True:
+        # Update
+        game_manager.update_map()
+
         # Render
         game_manager.render_world()
 
