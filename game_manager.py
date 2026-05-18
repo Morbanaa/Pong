@@ -47,20 +47,21 @@ class Game_Manger():
             self.game_map.append(row)
 
     def update_map(self):
-        for y in range(self.game_height):
-            for x in range(self.game_width):
-                if y == self.player.ypos and x == self.player.xpos:
-                    self.game_map[self.player.ypos][self.player.xpos] = "|"
-                    self.game_map[self.player.ypos -1][self.player.xpos] = "|"
-                    self.game_map[self.player.ypos -2][self.player.xpos] = "|"
-                    self.game_map[self.player.ypos +1][self.player.xpos] = "|"
-                    self.game_map[self.player.ypos +2][self.player.xpos] = "|"
 
-                    if self.game_map[self.player.ypos-3][self.player.xpos] != "@":
-                        self.game_map[self.player.ypos -3][self.player.xpos] = " "
-                    if self.game_map[self.player.ypos+3][self.player.xpos] != "@":
-                        self.game_map[self.player.ypos +3][self.player.xpos] = " "
+        for i in range(-2,3):
+            
+            self.game_map[self.player.ypos + i][self.player.xpos] = "|"
+            self.game_map[self.ai.ypos + i][self.ai.xpos] = "|"
 
+        if self.game_map[self.player.ypos-3][self.player.xpos] != "@":
+            self.game_map[self.player.ypos -3][self.player.xpos] = " "
+        if self.game_map[self.player.ypos+3][self.player.xpos] != "@":
+            self.game_map[self.player.ypos +3][self.player.xpos] = " "
+
+        if self.game_map[self.ai.ypos-3][self.ai.xpos] != "@":
+            self.game_map[self.ai.ypos -3][self.ai.xpos] = " "
+        if self.game_map[self.ai.ypos+3][self.ai.xpos] != "@":
+            self.game_map[self.ai.ypos +3][self.ai.xpos] = " "
 
     def render_world(self):
         for y in range(self.game_height):
