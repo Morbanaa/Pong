@@ -49,7 +49,7 @@ class Game_Manger():
     def update_objects(self):
         self.player.update_player(self.game_map)
         self.ai.update_ai(self.game_map)
-        self.ball.update_ball(self.game_map)
+        self.ball.update_ball(self.game_map,self.player,self.ai,self.game_height,self.game_width)
 
     def update_map(self):
 
